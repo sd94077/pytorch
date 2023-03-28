@@ -1,0 +1,121 @@
+# Conda 环境配置	
+
+打开Anaconda Prompt
+
+![image-20230218155853268](C:\Users\hy\AppData\Roaming\Typora\typora-user-images\image-20230218155853268.png)
+
+
+
+配置清华源
+
+```python
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+conda config --set show_channel_urls yes
+```
+
+创建pytorch 环境
+
+**1.首先查看python环境版本**
+
+```python
+python --version	
+```
+
+**2.创建Pytorch环境 torch_gpu 是环境房间的名字，python=3.x环境版本，可以自己设置**
+
+```python
+conda create -n torch_gpu python=3.7		
+```
+
+**3.激活torch_gpu虚拟环境，并进入环境，可以看到base变成了torch_gpu**
+
+```python
+conda activate torch_gpu	
+```
+
+![image-20230218155505986](C:\Users\hy\AppData\Roaming\Typora\typora-user-images\image-20230218155505986.png)
+
+**4.查看创建的房间(这个不用操作)**
+
+```python
+conda info --envs
+```
+
+<img src="C:\Users\hy\AppData\Roaming\Typora\typora-user-images\image-20230218155606030.png" alt="image-20230218155606030" style="zoom:100%;" />
+
+**5.退出**
+
+```python
+conda deactivate	
+```
+
+**6.删除虚拟环境（不要操作，为了查看）**
+
+```python
+conda remove -n torch_gpu --all
+```
+
+
+
+安装PyTorch
+
+进入官网，选择自己想要的版本 conda,python,gpu版本
+
+注意：如果之前安装了清华镜像，那么在复制命令的时候，就要删掉-c pytorch
+
+```python
+conda install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia
+```
+
+看pytorch是否安装成功
+
+```python
+python
+import torch
+import torchvisio
+
+torch.cuda.is_available()	
+```
+
+
+
+配置pycharm
+
+**settings  ==>  project: python interpreter  ==>   Show ALL ==> conda Environment ==> Existing environment  ==>  Interpreter **
+
+
+
+卸载Pytorch
+
+1.使用conda卸载Pytorch
+
+```python
+conda uninstall pytorch
+conda uninstall libtorch
+```
+
+
+
+2.使用pip卸载Pytorch
+
+```python
+pip unistall torch
+```
+
+
+
+```
+pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu117
+```
+
+
+
+
+
+启动jupyter notebook
+
+```python
+jupyter notebook
+```
+
