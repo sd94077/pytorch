@@ -1,0 +1,98 @@
+1.安装
+
+ 2.Tensor
+
+​	a.各种数值数据称为张量
+
+​	b.常数：scaler:0阶张量
+
+​	c.向量：vector:1阶张量
+
+​	d.矩阵：matrix:2阶张量
+
+​	e.3阶张量
+
+3.张量的创建方法
+
+​	a.torch.Tensor(list)
+
+​	b.torch.empty()/zeros()/ones()
+
+​	c.torch.rand()/randint()/randn()
+
+
+
+4.张量的方法和属性
+
+​	t1.item()把张量tensor的元素取出来。
+
+```python
+t1 = torch.Tensor([[[1]]])
+
+t1.item()
+
+t2.torch.Tensor([[[1,2]]])
+t2.item()
+
+t2.numpy() #转numpy数组
+
+t2.size(1) # 获取维度
+
+t2.view((3,4)) #形状改变
+
+```
+
+​	a.数据中只有一个元素的时候，取值：tensor.item()
+
+​	b.转化为numpy数组的时候：tensor.numpy()
+
+​	c.获取形状：
+
+​		i.tensor.size()
+
+​		ii.tensor.size(1) #获取第一个维度的形状
+
+​	d.形状的变化:tensor.view([shape])
+
+​	e.获取阶数：tensor.dim()
+
+​	f.常用计算方法：tensor.max()/min/std
+
+​	g.转置：
+
+​		i. 二维:tensor.t() tensor.transpose(0,1)
+
+​		ii.高维：tensor.transpose(1,2)/
+
+​						tensor.permute(0,2,1)
+
+​	h.取值和切片
+
+​		i.t[1,2,3]
+
+​		ii.t[1,:,:]
+
+​		iii.t[1,2,3] = 100
+
+5.数据类型
+
+​	a.指定数据类型：
+
+​		i.torch.tensor(array.dtype)
+
+​		ii.troch.ones(array.dtype)
+
+​	b.获取数据类型
+
+​		i.tensor.dtype
+
+​	c.修改数据类型
+
+​		i.tonsor.float()/long()/int()
+
+6.GPU中的tensor的使用
+
+​	a.实例化device:torch.device("cuda" if torch.cuda.is_avaiable() else "cpu")
+
+​	b.tensor.to(device) #把tensor转化为cuda支持的tensor，或者cpu支持的tensor
+
